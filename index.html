@@ -1357,10 +1357,10 @@
         }
 
         function exportExcel() {
-            let csvContent = "data:text/csv;charset=utf-8,Tanggal,Jenis,Pemberi_Penerima,Nominal,Metode,Acara,Catatan\\n";
+            let csvContent = "data:text/csv;charset=utf-8,Tanggal,Jenis,Pemberi_Penerima,Nominal,Metode,Acara,Catatan\n";
             transactions.forEach(t => {
                 let eventName = events.find(e => e.id === t.acaraId)?.nama || 'Kas Umum';
-                csvContent += `"${t.tanggal}","${t.jenis}","${t.pemberiPenerima}","${t.nominal}","${t.metode}","${eventName}","${t.catatan || ''}"\\n`;
+                csvContent += `"${t.tanggal}","${t.jenis}","${t.pemberiPenerima}","${t.nominal}","${t.metode}","${eventName}","${t.catatan || ''}"\n`;
             });
             var encodedUri = encodeURI(csvContent);
             var link = document.createElement("a");
@@ -1373,9 +1373,3 @@
     </script>
 </body>
 </html>
-'''
-
-with open('index.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
-
-print("HTML updated successfully and ready!")
